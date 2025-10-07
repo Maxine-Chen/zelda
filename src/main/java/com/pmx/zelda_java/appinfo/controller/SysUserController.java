@@ -91,27 +91,31 @@ public class SysUserController {
      * 用户注册接口
      */
     @PostMapping("/register")
-    public AjaxResult register(@RequestBody SysUser user) {
+    public AjaxResult register(@RequestBody Map<String, String> registerData) {
         try {
-            if (user.getUserNum() == null || user.getUserNum().trim().isEmpty()) {
-                return AjaxResult.fail("用户名不能为空");
-            }
-            if (user.getUserPwd() == null || user.getUserPwd().trim().isEmpty()) {
-                return AjaxResult.fail("密码不能为空");
-            }
+            String username = registerData.get("username");
+            String password = registerData.get("password");
 
             // 检查用户名是否已存在
             SysUser existingUser = sysUserService.lambdaQuery()
-                    .eq(SysUser::getUserNum, user.getUserNum())
+                    .eq(SysUser::getUserName, username)
                     .one();
             if (existingUser != null) {
                 return AjaxResult.fail("用户名已存在");
             }
 
+            String userNum = generateRandom8();
+
+            SysUser user=new SysUser(username,password,userNum);
 
             boolean saved = sysUserService.save(user);
             if (saved) {
-                return AjaxResult.success("注册成功");
+                // 返回用户id
+                Map<String, Object> result = new HashMap<>();
+                result.put("userName", username);
+                result.put("userId", user.getId()); // 明确返回用户Id
+
+                return AjaxResult.success(result);
             } else {
                 return AjaxResult.fail("注册失败");
             }
@@ -120,6 +124,12 @@ public class SysUserController {
             e.printStackTrace();
             return AjaxResult.fail("注册异常：" + e.getMessage());
         }
+    }
+
+    public static String generateRandom8() {
+        Random random = new Random();
+        int randomNum = random.nextInt(90000000) + 10000000;
+        return String.valueOf(randomNum);
     }
 
     /**

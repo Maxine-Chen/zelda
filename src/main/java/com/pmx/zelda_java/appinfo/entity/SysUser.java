@@ -28,6 +28,13 @@ public class SysUser implements Serializable {
 
     private String userNum;
 
+    public SysUser(String username, String password, String userNum) {
+        this.userName = username;
+        this.userPwd = password;
+        this.userNum = userNum;
+    }
+
+
     public Integer getId() {
         return id;
     }
