@@ -1,0 +1,25 @@
+<!--pages/details/details.wxml-->
+<navigation-bar title="ZELDA" back="{{true}}" color="white" background="#a89"></navigation-bar>
+<view style="height: 88.5vh;width: 100vh;display: flex;padding-bottom: 180rpx;">
+		<scroll-view style="height: 100%;" scroll-y="true">
+			<view class="goods" 
+				wx:for="{{detailslist}}" 
+				wx:key="id" >
+				<view style="width: 19%; flex-shrink: 0; ">
+					<image class="goods-image" mode="aspectFit" 
+						src="{{baseUrl}}{{item.goodsImg}}" />
+				</view>
+				<view style="width: 80%;height: 98%;">
+					<view class="goods-txt">
+						<view style="font-size: 25px;font-weight:bold;margin-bottom: 20rpx;margin-top: 20rpx;">
+							{{item.goodsName}}
+						</view>
+						<view style="margin-bottom: 20rpx;margin-top: 20rpx;font-weight:bold;">
+							<text>{{item.goodsPrice}} 卢比      × {{item.goodsNum}}</text>
+							<text>总价:{{item.goodsPrice * item.goodsNum}} 卢比</text>
+						</view>
+					</view>
+				</view>
+			</view>
+		</scroll-view>
+</view>

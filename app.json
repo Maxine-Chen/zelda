@@ -1,0 +1,62 @@
+{
+	"pages": [
+		"pages/index/index",
+		"pages/shop/shop",
+		"pages/car/car",
+		"pages/content/content",
+		"pages/order/order",
+		"pages/details/details",
+		"pages/tool/tool",
+		"pages/login/login"
+	],
+	"window": {
+		"navigationBarTextStyle": "black",
+		"navigationStyle": "custom"
+	},
+	"style": "v2",
+	"renderer": "skyline",
+	"rendererOptions": {
+		"skyline": {
+			"defaultDisplayBlock": true,
+			"defaultContentBox": true,
+			"tagNameStyleIsolation": "legacy",
+			"disableABTest": true,
+			"sdkVersionBegin": "3.0.0",
+			"sdkVersionEnd": "15.255.255"
+		}
+	},
+	"componentFramework": "glass-easel",
+	"sitemapLocation": "sitemap.json",
+	"lazyCodeLoading": "requiredComponents",
+	"tabBar": {
+		"color": "#000000",
+		"selectedColor": "#1e90ff",
+		"backgroundColor": "#ffffff",
+		"list": [
+			{
+				"pagePath": "pages/index/index",
+				"text": "首页",
+				"iconPath": "asset/tabbar/shou1.jpg",
+				"selectedIconPath": "asset/tabbar/shou2.jpg"
+			},
+			{
+				"pagePath": "pages/shop/shop",
+				"text": "商店",
+				"iconPath": "asset/tabbar/ss1.jpg",
+				"selectedIconPath": "asset/tabbar/ss2.jpg"
+			},
+			{
+				"pagePath": "pages/car/car",
+				"text": "购物车",
+				"iconPath": "asset/tabbar/car1.jpg",
+				"selectedIconPath": "asset/tabbar/car2.jpg"
+			},
+			{
+				"pagePath": "pages/order/order",
+				"text": "订单",
+				"iconPath": "asset/tabbar/my1.jpg",
+				"selectedIconPath": "asset/tabbar/my2.jpg"
+			}
+		]
+	}
+}

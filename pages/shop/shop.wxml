@@ -1,0 +1,48 @@
+<!--pages/shop/shop.wxml-->
+<navigation-bar title="商店" back="{{false}}" color="white" background="#a89"></navigation-bar>
+
+<view style="height: 100vh;width: 100vh;display: flex;">
+	<view style="width: 10%;">
+		<scroll-view style="height: 100%;" scroll-y="true">
+			<view class="left-txt{{item.selected?'.active':''}}" 
+				wx:for="{{shoplist}}" 
+				wx:key="id" 
+				bind:tap="selectShop" 
+				data-id="{{item.id}}">
+				{{item.title}}
+			</view>
+		</scroll-view>
+	</view>
+
+	<view style="width: 90%; padding-bottom: 180rpx;">
+		<scroll-view style="height: 100%;" scroll-y="true" 
+			scroll-into-view="{{currentShop}}" 
+			scroll-with-animation="true">
+			<view class="goods" 
+				wx:for="{{goodslist}}" 
+				wx:key="id" 
+				id="goods-{{item.shopId}}">
+				<view style="width: 19%; flex-shrink: 0; ">
+					<image class="goods-image" mode="aspectFit" 
+						src="{{baseUrl}}{{item.goodsImg}}" />
+				</view>
+				<view style="width: 80%;height: 98%;">
+					<view class="goods-txt">
+						<view style="font-size: 25px;font-weight:bold;margin-bottom: 20rpx;margin-top: 20rpx;">
+							{{item.goodsName}}
+						</view>
+						<view style="margin-bottom: 20rpx;margin-top: 20rpx;font-weight:bold;">
+							<text>价格:{{item.goodsPrice}} 卢比</text>
+							<text>商品介绍:{{item.goodsDesc}}</text>
+						</view>
+					</view>
+					<view class="btn-add"
+						bind:tap="saveCar" 
+						data-id="{{item.id}}">
+						<view style="font-size: 25px;color: #fff ;">+</view>
+					</view>
+				</view>
+			</view>
+		</scroll-view>
+	</view>
+</view>

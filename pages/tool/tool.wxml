@@ -1,0 +1,5 @@
+<!--pages/tool/tool.wxml-->
+<navigation-bar title="ZELDA" back="{{true}}" color="white" background="#a89"></navigation-bar>
+
+<text>金刚区跳转尝试页面</text>
+<text>金刚区跳转商品id：{{toolId}}</text>

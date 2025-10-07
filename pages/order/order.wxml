@@ -1,0 +1,39 @@
+<!--pages/order/order.wxml-->
+<navigation-bar title="订单" back="{{false}}" color="white" background="#a89"></navigation-bar>
+
+<scroll-view  style="height:88.5vh; width:390px;" scroll-y="true" wx:if="{{isLoggedIn}}">
+
+<!-- 商品区 -->
+<view  style="width: 100%; background-color: cornsilk;border-top:1px solid #ddd">	
+	<view class="order" 
+		wx:for="{{orderlist}}"
+		wx:key="id"
+		bind:tap="toOrderDetails"
+		data-id="{{item.id}}">	
+
+		<view style="width: 100%; background-color: rgb(254, 255, 238);" >
+			<view style="height: 80%;width: 100%;;display: flex;">
+				<view style="width: 30%; height: 100%;">
+					<image class="order-image"
+						mode="aspectFit" 
+						src="{{baseUrl}}{{item.firstImg}}"/>
+				</view>
+
+				<view class="goods-txt" style=" width: 70%;">
+					<view style="font-weight:bold;margin-bottom: 15rpx;margin-top: 15rpx;">
+					{{item.firstName}}等</view>
+					<view style="flex-direction: row;">	
+						<view style="width: 50%;font-size:30rpx;">总计：{{item.orderTotal}}卢比</view>
+						<view style="color: rgb(128, 127, 127);">
+						{{item.creatTime}}</view>
+					</view>
+				</view>
+			</view>	
+
+			<view style="color: rgb(128, 127, 127);padding-top: 5rpx;">
+				订单编号：{{item.orderNum}}
+			</view>
+		</view>		
+	</view>
+</view>
+</scroll-view>

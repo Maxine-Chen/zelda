@@ -1,0 +1,171 @@
+/**index.wxss**/
+page {
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+}
+
+.scrollarea {
+	flex: 1;
+	overflow-y: hidden;
+}
+
+swiper {
+	height: 350rpx;
+}
+
+image {
+	width: 100%;
+	height: 100%;
+}
+
+.diamond-grid {
+	background-color: rgb(210, 235, 250);
+	width: 100%;
+	padding: 20rpx 0 10rpx 0;
+}
+
+.grid-container {
+	display: flex;
+	flex-wrap: wrap;
+	/* 关键：允许换行 */
+	justify-content: flex-start;
+}
+
+.grid-item {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	width: 25%;
+	/* 每行4个，每个占25%宽度 */
+	margin-bottom: 20rpx;
+	box-sizing: border-box;
+}
+
+.icon {
+	width: 80rpx;
+	height: 80rpx;
+	margin-bottom: 10rpx;
+}
+
+.tool-text {
+	font-size: 24rpx;
+	color: #333;
+	text-align: center;
+}
+
+
+
+.neirong {
+	background-color: rgb(0, 0, 0);
+	width: calc(100% - 40rpx);
+	padding: 10px;
+	/* 内边距 */
+	display: flex;
+	flex-wrap: wrap;
+	/* 关键属性：允许换行 */
+}
+
+.neirong-item {
+	padding: 4px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: calc(50% - 20rpx);
+	height: 800rpx;
+	margin-bottom: 30rpx;
+	overflow: hidden;
+}
+
+.icon1 {
+	width: 100%;
+	height: 100%;
+	margin-bottom: 15rpx;
+}
+
+.text {
+	font-size: 45rpx;
+	color: rgb(204, 193, 193);
+	text-align: center;
+	margin-bottom: 15rpx;
+}
+
+.login-area {
+	padding: 30rpx;
+	background-color: cornsilk;
+	margin: 20rpx;
+	border-radius: 20rpx;
+}
+
+.login-card {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.login-left {
+	flex: 1;
+}
+
+.login-title {
+	display: block;
+	font-size: 36rpx;
+	font-weight: bold;
+	color: rgb(31, 30, 30);
+	margin-bottom: 10rpx;
+}
+
+.login-subtitle {
+	display: block;
+	font-size: 24rpx;
+	color: rgb(46, 46, 46);
+}
+
+.login-btn {
+	background-color:  rgb(207, 121, 59);
+	color: white;
+	border-radius: 50rpx;
+	padding: 20rpx 40rpx;
+	font-size: 28rpx;
+	font-weight: bold;
+}
+
+.logout-btn {
+	background: rgba(247, 141, 65, 0.418);
+	color:  rgb(207, 121, 59);
+	border: 2rpx solid rgba(255, 255, 255, 0.5);
+	border-radius: 30rpx;
+	padding: 15rpx 25rpx;
+	font-size: 28rpx;
+}
+
+.user-area {
+	padding: 30rpx;
+	background-color: cornsilk;
+	margin: 20rpx;
+	border-radius: 20rpx;
+}
+
+.user-card {
+	display: flex;
+	align-items: center;
+}
+
+.user-info {
+	flex: 1;
+}
+
+.user-name {
+	display: block;
+	font-size: 32rpx;
+	font-weight: bold;
+	color:black;
+	margin-bottom: 10rpx;
+}
+
+.user-actions {
+	display: flex;
+	flex-direction: column;
+	gap: 10rpx;
+  }

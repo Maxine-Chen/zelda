@@ -1,0 +1,19 @@
+/* pages/order/order.wxss */
+
+.order{
+	display: flex;
+	flex-direction: row;
+	height: 200rpx;
+	padding:20rpx;
+	border-bottom: 1px solid #ddd;
+}
+
+.order-image {
+	height: 160rpx;
+	width: auto;
+  }
+
+  .goods-txt{
+	flex: 1; 
+	padding-left: 50rpx;
+}

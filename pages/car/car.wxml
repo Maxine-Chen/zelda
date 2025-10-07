@@ -1,0 +1,61 @@
+<!--pages/car/car.wxml-->
+<navigation-bar title="购物车" back="{{false}}" color="white" background="#a89"></navigation-bar>
+
+<scroll-view  style="height:82.5vh; width:390px;" scroll-y="true"  wx:if="{{isLoggedIn}}">
+	<!-- 商品区 -->
+	<view  style="background-color: cornsilk;border-top:1px solid #ddd">	
+		<view class="goods" 
+			wx:for="{{carlist}}"
+			wx:key="id" 
+			id="goods-{{item.shopId}}">	
+
+			<view style="width: 10%;justify-content: center;">	
+				<radio checked="{{item.selected}}" 
+					bindtap="toggleSelect" 
+					data-index="{{index}}"/>
+			</view>
+
+			<view style="width: 90%;background-color: rgb(254, 255, 238); display: flex; flex-direction: row; align-items: flex-start;" >
+				<view style="width: 30%;flex-shrink: 0;">
+					<image class="goods-image"
+						mode="aspectFit" 
+						src="{{baseUrl}}{{item.goodsImg}}"/>
+				</view>
+				
+				<view class="goods-txt">
+					<view style="font-size: 50rpx;font-weight:bold;margin-bottom: 20rpx;margin-top: 20rpx;">
+						{{item.goodsName}}</view>
+					<view style="padding-top:35rpx;display:flex;flex-direction: row;">	
+						<view style="width: 50%;font-size:30rpx;">价格：{{item.goodsPrice}}</view>
+						<view style="width:47%;display:flex;flex-direction: row;">
+							<view class="btn" bind:tap="numSub" data-index="{{index}}">-</view>
+							<view style="width: 70%;">
+								<input class="input-num"mod value="{{item.goodsNum}}" type="number"/>
+							</view>
+							<view class="btn"	bind:tap="numPlus"  data-index="{{index}}">+</view>
+						</view>
+					</view>
+				</view>
+			</view>		
+		</view>
+	</view>
+</scroll-view>
+
+<!-- 总计 -->
+<view class="footer">
+	<view class="footer-item" style="width: 20%;">
+		<radio checked="{{selectAll}}"
+			bindtap="toggleSelectAll" />
+		<view>全选</view>
+	</view>
+	<view class="footer-item" style="width: 40%;">
+		总价:
+		<span style="color: red; font-weight: bold;">
+			{{totalPrice||0}}
+		</span>
+		卢比	
+	</view>
+	<view class="footer-item" style="width: 40%;">
+		<view class="btn-submit" bind:tap="payNow">提交订单({{selectedCount}})</view>
+	</view>
+</view>
