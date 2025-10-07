@@ -1,4 +1,5 @@
 <!--pages/try_to/try_to.wxml-->
 <navigation-bar title="ZELDA" back="{{true}}" color="white" background="#a89"></navigation-bar>
 
-<text>金刚区跳转尝试页面</text>
+<text>内容区跳转尝试页面</text>
+<text>内容区跳转商品id：{{contentId}}</text>

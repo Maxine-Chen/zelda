@@ -50,7 +50,7 @@
 
 	<!-- 内容区 -->
 	<view class="neirong">
-		<view class="neirong-item" wx:for="{{content}}">
+		<view class="neirong-item" wx:for="{{content}}" wx:key="id" bind:tap="onContentItemClick" data-id="{{item.id}}" data-url="../content/content">
 			<image class="icon1" src="{{baseUrl}}{{item.contentImg}}" mode="aspectFit" />
 			<text style="font-size: 60rpx; font-weight:800; font-style: italic; color: #b68316;">{{item.contentTitle}}</text>
 			<text class="text">{{item.contentTxt}}</text>

@@ -1,5 +1,5 @@
 <!--pages/details/details.wxml-->
-<navigation-bar title="ZELDA" back="{{true}}" color="white" background="#a89"></navigation-bar>
+<navigation-bar title="订单详情" back="{{true}}" color="white" background="#a89"></navigation-bar>
 <view style="height: 88.5vh;width: 100vh;display: flex;padding-bottom: 180rpx;">
 		<scroll-view style="height: 100%;" scroll-y="true">
 			<view class="goods" 

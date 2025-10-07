@@ -1,7 +1,7 @@
 <!--pages/login/login.wxml-->
 <navigation-bar title="登录" back="{{true}}" color="white" background="#a89"></navigation-bar>
 
-<view class="login-container">
+<view class="login-container"  wx:if="{{login}}">
   <!-- 登录头部 -->
   <view class="login-header">
     <text class="login-title">欢迎回来</text>
@@ -48,6 +48,57 @@
     <view class="register-guide">
       <text>还没有账户？</text>
       <text class="register-link" bindtap="onRegister">立即注册</text>
+    </view>
+  </view>
+</view>
+
+<view class="login-container" wx:if="!{{login}}">
+  <!-- 登录头部 -->
+  <view class="login-header">
+    <text class="login-title">欢迎注册</text>
+    <text class="login-subtitle">请注册您的账户</text>
+  </view>
+
+  <!-- 登录表单 -->
+  <view class="login-form">
+    <!-- 用户输入 -->
+    <view class="input-group">
+      <view class="input-label">
+        <text>用户名</text>
+      </view>
+      <input 
+        class="input-field" 
+        type="text" 
+        placeholder="请输入用户名" 
+        placeholder-class="placeholder"
+        value="{{username}}"
+        bindinput="onUsernameInput"
+      />
+    </view>
+
+    <!-- 密码输入 -->
+    <view class="input-group">
+      <view class="input-label">
+        <text>密码</text>
+      </view>
+      <input 
+        class="input-field" 
+        password 
+        placeholder="请输入密码" 
+        placeholder-class="placeholder"
+        value="{{password}}"
+        bindinput="onPasswordInput"
+      />
+    </view>
+
+   
+    <!-- 注册按钮 -->
+    <button class="login-btn" bindtap="handleRegister" disabled="{{!username || !password}}">注册</button>
+
+    <!-- 注册引导 -->
+    <view class="register-guide">
+      <text>已经有账户？</text>
+      <text class="register-link" bindtap="onlogin">立即登录</text>
     </view>
   </view>
 </view>

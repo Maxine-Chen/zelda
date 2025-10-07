@@ -3,6 +3,7 @@ var app = getApp();
 
 Page({
 	data: {
+		array1:[],
 		content: [],
 		banner: [],
 		indicatorDots: true,
@@ -131,6 +132,38 @@ Page({
 			}
 		});
 	},
+
+	onContentItemClick(event) {
+		let contentId = event.currentTarget.dataset.id;
+		const pagePath = event.currentTarget.dataset.url;
+		console.log("con点击");
+		// 2. 简单校验路径是否存在
+		if (!pagePath) {
+			wx.showToast({
+				title: '功能开发中~',
+				icon: 'none'
+			});
+			return;
+		}
+		// 3. 使用小程序路由API跳转到指定页面
+		wx.navigateTo({ //非tabbar页面
+			url: pagePath, // 跳转的目标路径
+			success: (res) => {
+				res.eventChannel.emit('acceptContentId', {
+					contentId:contentId
+				});
+			},
+			fail: (err) => {
+				// 跳转失败的处理（例如页面不存在）
+				console.error('跳转失败:', err);
+				wx.showToast({
+					title: '页面不存在',
+					icon: 'error'
+				});
+			}
+		});
+	},
+
 	// 检查登录状态
 	checkLoginStatus() {
 		this.setData({

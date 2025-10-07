@@ -3,11 +3,11 @@
 		"pages/index/index",
 		"pages/shop/shop",
 		"pages/car/car",
-		"pages/content/content",
 		"pages/order/order",
 		"pages/details/details",
 		"pages/tool/tool",
-		"pages/login/login"
+		"pages/login/login",
+		"pages/content/content"
 	],
 	"window": {
 		"navigationBarTextStyle": "black",

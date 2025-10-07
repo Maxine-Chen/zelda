@@ -1,18 +1,30 @@
 // pages/try_to/try_to.js
+
+var app = getApp();
 Page({
 
 	/**
 	 * 页面的初始数据
 	 */
 	data: {
-
+		contentId: null
 	},
 
 	/**
 	 * 生命周期函数--监听页面加载
 	 */
 	onLoad(options) {
-
+		console.log('内容区详情页面加载, globalData:', app.globalData);
+		console.log('baseUrl:', app.globalData.baseUrl);
+		const eventChannel = this.getOpenerEventChannel();
+		this.setData({
+			baseUrl: app.globalData.baseUrl
+		});
+		eventChannel.on('acceptContentId', (data) => {
+			this.setData({
+				contentId: data.contentId
+			});
+		});
 	},
 
 	/**
