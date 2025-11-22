@@ -30,12 +30,16 @@ public class UploadController {
         try {
             // 获取原始文件名
             String originalFilename = file.getOriginalFilename();
-            if (originalFilename == null) {
+            if (originalFilename == null || originalFilename.trim().isEmpty()) {
                 return AjaxResult.fail("文件名无效");
             }
 
             // 获取文件扩展名
-            String ext = originalFilename.substring(originalFilename.lastIndexOf("."));
+            int lastDotIndex = originalFilename.lastIndexOf(".");
+            if (lastDotIndex == -1 || lastDotIndex == originalFilename.length() - 1) {
+                return AjaxResult.fail("文件格式无效");
+            }
+            String ext = originalFilename.substring(lastDotIndex).toLowerCase();
             
             // 验证文件类型
             if (!ext.matches("\\.(jpg|jpeg|png|gif|bmp|webp)$")) {
@@ -63,8 +67,8 @@ public class UploadController {
             return AjaxResult.success(relativePath);
 
         } catch (IOException e) {
-            e.printStackTrace();
-            return AjaxResult.exception("上传失败: " + e.getMessage());
+            // Use proper logging instead of printStackTrace in production
+            return AjaxResult.fail("上传失败，请稍后重试");
         }
     }
 }

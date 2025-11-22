@@ -209,11 +209,13 @@ Page({
 					wx.showToast({
 						title: '保存成功',
 						icon: 'success',
-						duration: 2000
+						duration: 1500,
+						success: () => {
+							setTimeout(() => {
+								wx.navigateBack();
+							}, 1500);
+						}
 					});
-					setTimeout(() => {
-						wx.navigateBack();
-					}, 2000);
 				} else {
 					wx.showToast({
 						title: res.data.msg || '保存失败',
@@ -247,10 +249,26 @@ Page({
 			return;
 		}
 
+		// 简单提取纯文本用于预览
+		let plainText = contentTxt;
+		try {
+			// 使用更安全的方法移除HTML标签
+			plainText = contentTxt.replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '')
+								   .replace(/<style\b[^<]*(?:(?!<\/style>)<[^<]*)*<\/style>/gi, '')
+								   .replace(/<[^>]+>/g, '')
+								   .replace(/&nbsp;/g, ' ')
+								   .replace(/&lt;/g, '<')
+								   .replace(/&gt;/g, '>')
+								   .replace(/&amp;/g, '&')
+								   .substring(0, 200); // 限制预览长度
+		} catch (e) {
+			plainText = '内容预览暂不可用';
+		}
+
 		// 显示预览对话框
 		wx.showModal({
 			title: contentTitle,
-			content: contentTxt.replace(/<[^>]+>/g, ''), // 移除HTML标签用于预览
+			content: plainText,
 			showCancel: false
 		});
 	}
