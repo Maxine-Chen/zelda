@@ -1,0 +1,43 @@
+<!--pages/editor/editor.wxml-->
+<navigation-bar title="{{contentId ? '编辑内容' : '创建内容'}}" back="{{true}}" color="white" background="#a89"></navigation-bar>
+
+<scroll-view class="container" scroll-y>
+	<!-- 标题输入 -->
+	<view class="form-section">
+		<text class="section-title">标题</text>
+		<input class="title-input" placeholder="请输入标题" value="{{contentTitle}}" bindinput="onTitleInput" maxlength="50" />
+	</view>
+
+	<!-- 封面图片 -->
+	<view class="form-section">
+		<text class="section-title">封面图片</text>
+		<view class="image-picker">
+			<view wx:if="{{contentImg}}" class="image-preview">
+				<image src="{{baseUrl}}{{contentImg}}" mode="aspectFill" />
+			</view>
+			<button class="choose-image-btn" bindtap="chooseImage">
+				{{contentImg ? '更换图片' : '选择图片'}}
+			</button>
+		</view>
+	</view>
+
+	<!-- URL输入（可选） -->
+	<view class="form-section">
+		<text class="section-title">链接地址（可选）</text>
+		<input class="url-input" placeholder="请输入链接地址" value="{{contentUrl}}" bindinput="onUrlInput" />
+	</view>
+
+	<!-- 富文本编辑器 -->
+	<view class="form-section">
+		<text class="section-title">内容</text>
+		<view class="editor-wrapper">
+			<editor id="editor" class="rich-editor" placeholder="{{placeholder}}" bindready="onEditorReady" bindinput="onEditorInput" show-img-size show-img-toolbar show-img-resize></editor>
+		</view>
+	</view>
+
+	<!-- 操作按钮 -->
+	<view class="action-buttons">
+		<button class="preview-btn" bindtap="previewContent">预览</button>
+		<button class="save-btn" bindtap="saveContent">保存</button>
+	</view>
+</scroll-view>

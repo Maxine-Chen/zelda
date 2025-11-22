@@ -198,4 +198,11 @@ Page({
 			}
 		});
 	},
+
+	// 跳转到编辑器页面
+	navigateToEditor() {
+		wx.navigateTo({
+			url: '/pages/editor/editor'
+		});
+	},
 })

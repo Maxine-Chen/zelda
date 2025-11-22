@@ -4,9 +4,7 @@ import com.pmx.zelda_java.appinfo.entity.Content;
 import com.pmx.zelda_java.appinfo.service.IContentService;
 import com.pmx.zelda_java.config.AjaxResult;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -36,6 +34,74 @@ public class ContentController {
             return AjaxResult.exception(e.getMessage());
         }
 
+    }
+
+    @GetMapping("getById")
+    public Object getById(@RequestParam Integer id){
+        try{
+            Content content = contentService.getById(id);
+            if(content != null){
+                return AjaxResult.success(content);
+            }
+            else{
+                return AjaxResult.fail("内容不存在");
+            }
+        }
+        catch(Exception e){
+            e.printStackTrace();
+            return AjaxResult.exception(e.getMessage());
+        }
+    }
+
+    @PostMapping("add")
+    public Object add(@RequestBody Content content){
+        try{
+            boolean result = contentService.save(content);
+            if(result){
+                return AjaxResult.success("添加成功");
+            }
+            else{
+                return AjaxResult.fail("添加失败");
+            }
+        }
+        catch(Exception e){
+            e.printStackTrace();
+            return AjaxResult.exception(e.getMessage());
+        }
+    }
+
+    @PostMapping("update")
+    public Object update(@RequestBody Content content){
+        try{
+            boolean result = contentService.updateById(content);
+            if(result){
+                return AjaxResult.success("更新成功");
+            }
+            else{
+                return AjaxResult.fail("更新失败");
+            }
+        }
+        catch(Exception e){
+            e.printStackTrace();
+            return AjaxResult.exception(e.getMessage());
+        }
+    }
+
+    @PostMapping("delete")
+    public Object delete(@RequestParam Integer id){
+        try{
+            boolean result = contentService.removeById(id);
+            if(result){
+                return AjaxResult.success("删除成功");
+            }
+            else{
+                return AjaxResult.fail("删除失败");
+            }
+        }
+        catch(Exception e){
+            e.printStackTrace();
+            return AjaxResult.exception(e.getMessage());
+        }
     }
 
 }

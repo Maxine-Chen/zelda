@@ -1,5 +1,28 @@
 <!--pages/try_to/try_to.wxml-->
 <navigation-bar title="ZELDA" back="{{true}}" color="white" background="#a89"></navigation-bar>
 
-<text>内容区跳转尝试页面</text>
-<text>内容区跳转商品id：{{contentId}}</text>
+<scroll-view class="container" scroll-y>
+	<view wx:if="{{contentDetail}}" class="content-detail">
+		<!-- 标题 -->
+		<view class="content-title">{{contentDetail.contentTitle}}</view>
+		
+		<!-- 封面图 -->
+		<view wx:if="{{contentDetail.contentImg}}" class="content-image">
+			<image src="{{baseUrl}}{{contentDetail.contentImg}}" mode="aspectFill" />
+		</view>
+		
+		<!-- 内容 -->
+		<view class="content-text">
+			<rich-text nodes="{{contentDetail.contentTxt}}"></rich-text>
+		</view>
+		
+		<!-- 编辑按钮 -->
+		<view class="edit-button-container">
+			<button class="edit-btn" bindtap="editContent">编辑内容</button>
+		</view>
+	</view>
+	
+	<view wx:else class="loading">
+		<text>加载中...</text>
+	</view>
+</scroll-view>

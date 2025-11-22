@@ -7,7 +7,8 @@
 		"pages/details/details",
 		"pages/tool/tool",
 		"pages/login/login",
-		"pages/content/content"
+		"pages/content/content",
+		"pages/editor/editor"
 	],
 	"window": {
 		"navigationBarTextStyle": "black",
