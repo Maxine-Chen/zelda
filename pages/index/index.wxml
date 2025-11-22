@@ -57,3 +57,10 @@
 		</view>
 	</view>
 </scroll-view>
+
+<!-- 悬浮按钮：创建内容 -->
+<view class="fab-container" wx:if="{{isLoggedIn}}">
+	<button class="fab-btn" bindtap="navigateToEditor">
+		<text class="fab-icon">+</text>
+	</button>
+</view>

@@ -169,3 +169,31 @@ image {
 	flex-direction: column;
 	gap: 10rpx;
   }
+
+/* 悬浮按钮样式 */
+.fab-container {
+	position: fixed;
+	right: 40rpx;
+	bottom: 100rpx;
+	z-index: 1000;
+}
+
+.fab-btn {
+	width: 120rpx;
+	height: 120rpx;
+	border-radius: 50%;
+	background: linear-gradient(135deg, #a89 0%, #8a7 100%);
+	box-shadow: 0 8rpx 20rpx rgba(0, 0, 0, 0.3);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border: none;
+	padding: 0;
+}
+
+.fab-icon {
+	font-size: 60rpx;
+	color: white;
+	font-weight: 300;
+	line-height: 1;
+}
