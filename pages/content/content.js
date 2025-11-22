@@ -7,7 +7,8 @@ Page({
 	 * 页面的初始数据
 	 */
 	data: {
-		contentId: null
+		contentId: null,
+		contentDetail: null
 	},
 
 	/**
@@ -24,6 +25,40 @@ Page({
 			this.setData({
 				contentId: data.contentId
 			});
+			this.loadContentDetail(data.contentId);
+		});
+	},
+
+	/**
+	 * 加载内容详情
+	 */
+	loadContentDetail(id) {
+		let self = this;
+		wx.request({
+			url: app.globalData.baseUrl + '/appinfo/content/getById',
+			data: {
+				id: id
+			},
+			success(res) {
+				if (res.data.code == 200) {
+					self.setData({
+						contentDetail: res.data.data
+					});
+				}
+			},
+			fail(err) {
+				console.log('加载内容失败:', err);
+			}
+		});
+	},
+
+	/**
+	 * 编辑内容
+	 */
+	editContent() {
+		const contentId = this.data.contentId;
+		wx.navigateTo({
+			url: `/pages/editor/editor?id=${contentId}`
 		});
 	},
 

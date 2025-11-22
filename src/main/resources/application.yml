@@ -6,6 +6,10 @@ spring:
     username: root
     password: 123456
     url: jdbc:mysql://localhost:3306/zelda?serverTimezone=Asia/Shanghai&useSSL=false&characterEncoding=utf8
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 100MB
 
 server:
   port:8080
@@ -13,3 +17,7 @@ server:
 mybatis-plus:
   configuration:
     map-underscore-to-camel-case: true
+
+# 文件上传配置
+upload:
+  path: /uploads/
