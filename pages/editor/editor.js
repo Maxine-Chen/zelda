@@ -249,26 +249,10 @@ Page({
 			return;
 		}
 
-		// 简单提取纯文本用于预览
-		let plainText = contentTxt;
-		try {
-			// 使用更安全的方法移除HTML标签
-			plainText = contentTxt.replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '')
-								   .replace(/<style\b[^<]*(?:(?!<\/style>)<[^<]*)*<\/style>/gi, '')
-								   .replace(/<[^>]+>/g, '')
-								   .replace(/&nbsp;/g, ' ')
-								   .replace(/&lt;/g, '<')
-								   .replace(/&gt;/g, '>')
-								   .replace(/&amp;/g, '&')
-								   .substring(0, 200); // 限制预览长度
-		} catch (e) {
-			plainText = '内容预览暂不可用';
-		}
-
-		// 显示预览对话框
+		// 预览提示 - 不尝试解析HTML以避免安全问题
 		wx.showModal({
-			title: contentTitle,
-			content: plainText,
+			title: '预览',
+			content: `标题: ${contentTitle}\n\n内容已编辑，保存后可在详情页查看完整效果。`,
 			showCancel: false
 		});
 	}
